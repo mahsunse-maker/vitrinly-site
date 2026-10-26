@@ -1,0 +1,8 @@
+{
+  // Cloudflare Workers statik site: public/ klasörü olduğu gibi yayınlanır.
+  "name": "vitrinly-site",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./public"
+  }
+}
