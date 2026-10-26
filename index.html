@@ -3,27 +3,288 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vitrinly – Your listings, on status every day</title>
-<meta name="description" content="Save your listings once and share them to your status in one tap, every day. For real estate agents, car dealers and shops.">
+<title>Vitrinly – Your listings on status, every day</title>
+<meta name="description" content="Save your listings once and share them to your status in one tap, every day. For real estate agents, car dealers and shops. No account, no tracking.">
+<meta property="og:title" content="Vitrinly – Your listings on status, every day">
+<meta property="og:description" content="Save once. Share every day in one tap. Beautiful status images and videos for your listings.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vitrinly.app/">
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
 <style>
-  :root { --ink:#222; --muted:#555; --bg:#FFFBE6; }
-  * { box-sizing:border-box; }
-  body { margin:0; min-height:100vh; display:grid; place-items:center; background:var(--bg); color:var(--ink); font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; text-align:center; padding:24px 16px; }
-  .mark { width:96px; height:96px; margin:0 auto 20px; border-radius:26px; background:linear-gradient(135deg,#FFE94D,#FFC400); display:grid; place-items:center; font-size:48px; font-weight:900; box-shadow:0 10px 30px rgba(179,107,0,.25); }
-  h1 { font-size:40px; margin:0 0 8px; }
-  p { margin:6px auto; max-width:520px; color:var(--muted); }
-  .tr { margin-top:18px; }
-  footer { margin-top:40px; font-size:14px; }
-  a { color:#8A5200; }
+  :root {
+    --bg: #FFFBE6;
+    --surface: #FFFFFF;
+    --ink: #1E1E1E;
+    --muted: #5C5646;
+    --line: #EFE4BD;
+    --accent: #FFD600;
+    --accent-deep: #B36B00;
+    --dark: #1B1B1B;
+    --radius: 20px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+  /* Üst çubuk */
+  .top { position: sticky; top: 0; z-index: 10; background: rgba(255, 251, 230, .9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 20px; text-decoration: none; }
+  .brand img { width: 36px; height: 36px; }
+  .top nav { display: flex; align-items: center; gap: 18px; font-size: 15px; }
+  .top nav a { text-decoration: none; color: var(--muted); }
+  .lang { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 14px; font: inherit; font-size: 14px; cursor: pointer; }
+  @media (max-width: 640px) { .top nav a { display: none; } }
+
+  /* Giriş */
+  .hero { padding: 64px 0 40px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; }
+  @media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; text-align: center; } }
+  .eyebrow { display: inline-block; background: var(--dark); color: var(--accent); font-weight: 700; font-size: 14px; border-radius: 999px; padding: 6px 14px; }
+  h1 { font-size: clamp(36px, 6vw, 60px); line-height: 1.05; margin: 18px 0 16px; letter-spacing: -.02em; }
+  h1 mark { background: linear-gradient(transparent 58%, var(--accent) 58%); color: inherit; }
+  .lead { font-size: 19px; color: var(--muted); max-width: 540px; }
+  @media (max-width: 860px) { .lead { margin: 0 auto; } }
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  @media (max-width: 860px) { .cta { justify-content: center; } }
+  .store { display: inline-flex; align-items: center; gap: 10px; background: var(--dark); color: #fff; text-decoration: none; border-radius: 14px; padding: 12px 20px; font-weight: 700; }
+  .store small { display: block; font-weight: 500; font-size: 12px; opacity: .75; }
+  .store svg { width: 26px; height: 26px; fill: currentColor; }
+  .note { font-size: 14px; color: var(--muted); margin-top: 12px; }
+
+  /* Telefon ve durum kartı (HTML ile çizilmiş örnek) */
+  .phone { width: 300px; max-width: 80vw; aspect-ratio: 9 / 18.5; margin: 0 auto; background: var(--dark); border-radius: 44px; padding: 12px; box-shadow: 0 30px 60px rgba(60, 40, 0, .25); position: relative; }
+  .screen { width: 100%; height: 100%; border-radius: 34px; overflow: hidden; background: #FFF4C9; display: flex; flex-direction: column; padding: 14px; gap: 10px; position: relative; }
+  .ring { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 34%; height: 4px; display: flex; gap: 4px; }
+  .ring i { flex: 1; background: rgba(0, 0, 0, .25); border-radius: 2px; }
+  .ring i:first-child { background: var(--dark); }
+  .photo { flex: 1.25; margin-top: 10px; border-radius: 18px; background: linear-gradient(160deg, #8EC5FC 0%, #E0C3FC 45%, #F7D794 100%); position: relative; overflow: hidden; }
+  .photo::after { content: ""; position: absolute; left: 12%; right: 12%; bottom: 0; height: 52%; background: linear-gradient(#fff, #f2efe6); clip-path: polygon(0 35%, 50% 0, 100% 35%, 100% 100%, 0 100%); }
+  .pill { position: absolute; top: 10px; left: 10px; z-index: 2; background: rgba(0, 0, 0, .45); color: #fff; font-size: 11px; font-weight: 800; border-radius: 999px; padding: 5px 10px; border: 1px solid rgba(255, 255, 255, .5); }
+  .badge { position: absolute; right: 10px; top: 44%; z-index: 2; background: linear-gradient(90deg, #FF416C, #FF4B2B); color: #fff; font-weight: 900; font-size: 12px; padding: 4px 10px; border-radius: 10px; border: 2px solid #fff; transform: rotate(-8deg); animation: bob 2s ease-in-out infinite; }
+  .emoji { position: absolute; left: 12px; top: 40%; z-index: 2; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #FFE259, #FFA751); border: 2px solid #fff; font-size: 16px; animation: bob 2s ease-in-out infinite .6s; }
+  @keyframes bob { 50% { transform: translateY(-6px) rotate(4deg); } }
+  @media (prefers-reduced-motion: reduce) { .badge, .emoji { animation: none; } }
+  .ttl { font-weight: 900; font-size: 18px; line-height: 1.15; color: #3A2E00; }
+  .price { align-self: flex-start; background: #D99A00; color: #111; font-weight: 900; font-size: 20px; border-radius: 14px; padding: 4px 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .chips span { background: rgba(217, 154, 0, .15); color: #3A2E00; font-size: 11px; font-weight: 700; border-radius: 999px; padding: 3px 9px; }
+  .contact { background: #D99A00; color: #111; border-radius: 14px; padding: 8px; text-align: center; font-weight: 900; font-size: 14px; }
+
+  /* Bölümler */
+  section { padding: 56px 0; }
+  h2 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 12px; letter-spacing: -.01em; }
+  .sub { color: var(--muted); max-width: 640px; margin: 0 0 32px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .card .ico { width: 44px; height: 44px; border-radius: 12px; background: var(--accent); display: grid; place-items: center; font-size: 22px; margin-bottom: 12px; }
+  .card h3 { margin: 0 0 6px; font-size: 18px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  .steps { counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .step { background: var(--dark); color: #fff; border-radius: var(--radius); padding: 24px; position: relative; }
+  .step::before { counter-increment: s; content: counter(s); position: absolute; top: 18px; right: 20px; font-size: 44px; font-weight: 900; color: var(--accent); opacity: .9; }
+  .step h3 { margin: 0 0 6px; font-size: 18px; padding-right: 40px; }
+  .step p { margin: 0; color: #d9d4c4; font-size: 15px; padding-right: 40px; }
+
+  .sectors { display: flex; flex-wrap: wrap; gap: 10px; }
+  .sectors span { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 10px 18px; font-weight: 700; }
+
+  .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; max-width: 760px; }
+  .plan { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
+  .plan.pro { background: var(--dark); color: #fff; border-color: var(--dark); }
+  .plan h3 { margin: 0; font-size: 22px; }
+  .plan .big { font-size: 34px; font-weight: 900; margin: 8px 0 12px; }
+  .plan.pro .big { color: var(--accent); }
+  .plan ul { margin: 0; padding-left: 20px; color: var(--muted); }
+  .plan.pro ul { color: #d9d4c4; }
+
+  details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; margin-bottom: 10px; }
+  summary { font-weight: 700; cursor: pointer; }
+  details p { color: var(--muted); margin: 10px 0 0; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 14px; color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  [data-tr] { }
 </style>
 </head>
 <body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/logo.svg" alt="">Vitrinly</a>
+    <nav>
+      <a href="#features" data-i18n="navFeatures">Features</a>
+      <a href="#how" data-i18n="navHow">How it works</a>
+      <a href="#pricing" data-i18n="navPricing">Pricing</a>
+      <a href="#faq" data-i18n="navFaq">FAQ</a>
+      <button class="lang" id="lang" type="button" aria-label="Language">TR</button>
+    </nav>
+  </div>
+</header>
+
 <main>
-  <div class="mark">V</div>
-  <h1>Vitrinly</h1>
-  <p>Save your listings once. Share them to your status in one tap, every day.</p>
-  <p class="tr" lang="tr">İlanlarını bir kez kaydet, her gün tek dokunuşla durumunda paylaş.</p>
-  <footer><a href="/privacy/">Privacy Policy · Gizlilik Politikası</a> · <a href="mailto:mahsunse@gmail.com">Contact</a></footer>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow" data-i18n="eyebrow">For real estate, car dealers &amp; shops</span>
+        <h1 data-i18n-html="h1">Your listings on <mark>status</mark>, every day.</h1>
+        <p class="lead" data-i18n="lead">Save each listing once. Vitrinly turns it into an eye-catching status image or video and shares all of them in one tap — then reminds you when they expire.</p>
+        <div class="cta">
+          <a class="store" href="#" aria-disabled="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 1.8 13.8 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1Zm11.3 11.3 2.6 2.6-11.9 6.8 9.3-9.4Zm3.9-3.9 2.7 1.6c.8.5.8 1.7 0 2.2l-2.7 1.6-2.9-2.6 2.9-2.8ZM5.6 1.5l11.9 6.8-2.6 2.6-9.3-9.4Z"/></svg>
+            <span><small data-i18n="soon">Coming soon on</small>Google Play</span>
+          </a>
+          <a class="store" href="#" aria-disabled="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.7.9-.8 0-2-.9-3.2-.9-1.7 0-3.2 1-4 2.5-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.1-1.2 2.9-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.3-.9-2.3-3.7ZM14 5.2c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4Z"/></svg>
+            <span><small data-i18n="soon">Coming soon on</small>App Store</span>
+          </a>
+        </div>
+        <p class="note" data-i18n="note">No account. No tracking. Your listings stay on your phone.</p>
+      </div>
+      <div class="phone" aria-hidden="true">
+        <div class="screen">
+          <div class="ring"><i></i><i></i><i></i></div>
+          <div class="photo"><span class="pill">⌂ Cedar Estate</span><span class="emoji">🔥</span><span class="badge" data-i18n="deal">DEAL</span></div>
+          <div class="ttl" data-i18n="demoTitle">3+1 apartment with garden</div>
+          <div class="price" data-i18n="demoPrice">$425,000</div>
+          <div class="chips"><span data-i18n="demoC1">3 bed</span><span>145 m²</span><span data-i18n="demoC2">Parking</span></div>
+          <div class="contact" data-i18n="demoPhone">📞 +1 555 010 2030</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <h2 data-i18n="fTitle">Everything a daily status needs</h2>
+      <p class="sub" data-i18n="fSub">Statuses disappear after 24 hours. Vitrinly makes posting them again fast, consistent and good-looking.</p>
+      <div class="grid">
+        <div class="card"><div class="ico">⚡</div><h3 data-i18n="f1t">Share all in one tap</h3><p data-i18n="f1p">Select your listings and send every status image at once. Pick "My status" and you are done.</p></div>
+        <div class="card"><div class="ico">⏰</div><h3 data-i18n="f2t">24-hour reminder</h3><p data-i18n="f2p">When your statuses expire, Vitrinly reminds you. Tap the notification and share again.</p></div>
+        <div class="card"><div class="ico">🎬</div><h3 data-i18n="f3t">Animated status videos</h3><p data-i18n="f3p">Bouncing stickers, "DEAL" labels and a 3-scene video: title and price, the footage, then your contact card.</p></div>
+        <div class="card"><div class="ico">🎨</div><h3 data-i18n="f4t">Themes &amp; your brand</h3><p data-i18n="f4p">Five themes, your colours, your logo and business name — as a glass label, sparkles or a scrolling ticker.</p></div>
+        <div class="card"><div class="ico">🏷️</div><h3 data-i18n="f5t">Ready-made tags</h3><p data-i18n="f5p">Choose your sector once and get quick tags like "3+1", "Furnished" or "Automatic" — no typing.</p></div>
+        <div class="card"><div class="ico">🔒</div><h3 data-i18n="f6t">Private by design</h3><p data-i18n="f6p">No account, no ads, no tracking. Back up to your own Drive or iCloud whenever you like.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <h2 data-i18n="hTitle">How it works</h2>
+      <p class="sub" data-i18n="hSub">Three steps. The first one you only do once.</p>
+      <div class="steps">
+        <div class="step"><h3 data-i18n="s1t">Add your listing</h3><p data-i18n="s1p">Photos or a video, price, tags and a short description.</p></div>
+        <div class="step"><h3 data-i18n="s2t">Pick a look</h3><p data-i18n="s2p">Choose a theme, stickers and where your business name appears.</p></div>
+        <div class="step"><h3 data-i18n="s3t">Share every day</h3><p data-i18n="s3p">"Share all" sends every listing to your status. Repeat when reminded.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 data-i18n="secTitle">Made for people who sell</h2>
+      <div class="sectors">
+        <span data-i18n="sec1">🏠 Real estate</span>
+        <span data-i18n="sec2">🚗 Car dealers</span>
+        <span data-i18n="sec3">🛍️ Shops &amp; boutiques</span>
+        <span data-i18n="sec4">🛠️ Services</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <h2 data-i18n="pTitle">Simple pricing</h2>
+      <p class="sub" data-i18n="pSub">Start free. Upgrade when your portfolio grows.</p>
+      <div class="price-grid">
+        <div class="plan"><h3 data-i18n="p1t">Free</h3><div class="big" data-i18n="p1b">5 listings</div><ul><li data-i18n="p1a">All themes and stickers</li><li data-i18n="p1c">Share all &amp; reminders</li><li data-i18n="p1d">Backup &amp; restore</li></ul></div>
+        <div class="plan pro"><h3>Pro</h3><div class="big" data-i18n="p2b">Unlimited</div><ul><li data-i18n="p2a">Unlimited listings</li><li data-i18n="p2c">Monthly or yearly</li><li data-i18n="p2d">Billed by Google Play or the App Store</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <h2 data-i18n="qTitle">Questions</h2>
+      <details><summary data-i18n="q1">Does Vitrinly post to my status automatically?</summary><p data-i18n="a1">No app is allowed to post to your status without you. Vitrinly prepares everything and opens the share sheet — you just pick "My status".</p></details>
+      <details><summary data-i18n="q2">Where are my listings stored?</summary><p data-i18n="a2">Only on your phone. Use "Back up" to save a copy to your own Drive, iCloud or Files, and restore it on a new phone.</p></details>
+      <details><summary data-i18n="q3">How long can videos be?</summary><p data-i18n="a3">Up to 60 seconds per status. For longer videos you choose which 60 seconds to share.</p></details>
+      <details><summary data-i18n="q4">Which languages are supported?</summary><p data-i18n="a4">English, Turkish, German, French, Spanish, Portuguese, Russian and Arabic.</p></details>
+    </div>
+  </section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Vitrinly</span>
+    <span><a href="/privacy/" data-i18n="privacy">Privacy Policy</a> · <a href="mailto:mahsunse@gmail.com" data-i18n="contact">Contact</a></span>
+  </div>
+</footer>
+
+<script>
+  // Dil: ziyaretçinin tarayıcı dili Türkçeyse Türkçe, değilse İngilizce açılır; seçim hatırlanır.
+  const tr = {
+    navFeatures: "Özellikler", navHow: "Nasıl çalışır", navPricing: "Fiyat", navFaq: "SSS",
+    eyebrow: "Emlakçılar, galeriler ve dükkânlar için",
+    h1: "İlanların her gün <mark>durumda</mark>.",
+    lead: "Her ilanı bir kez kaydet. Vitrinly onu göz alıcı bir durum görseline ya da videosuna çevirir, hepsini tek dokunuşla paylaşır ve süresi dolunca sana hatırlatır.",
+    soon: "Yakında", note: "Hesap yok. Takip yok. İlanların telefonunda kalır.",
+    deal: "FIRSAT", demoTitle: "Bahçeli 3+1 daire", demoPrice: "₺4.750.000", demoC1: "3+1", demoC2: "Otopark", demoPhone: "📞 0555 000 00 00",
+    fTitle: "Günlük durum için gereken her şey",
+    fSub: "Durumlar 24 saatte kaybolur. Vitrinly onları yeniden paylaşmayı hızlı, düzenli ve şık hale getirir.",
+    f1t: "Tek dokunuşla hepsini paylaş", f1p: "İlanlarını seç, tüm durum görsellerini bir kerede gönder. \"Durumum\"u seç, bitti.",
+    f2t: "24 saat hatırlatıcısı", f2p: "Durumlarının süresi dolunca Vitrinly hatırlatır. Bildirime dokun, yeniden paylaş.",
+    f3t: "Hareketli durum videoları", f3p: "Zıplayan çıkartmalar, \"FIRSAT\" yazıları ve üç sahneli video: başlık ve fiyat, görüntü, sonra iletişim kartın.",
+    f4t: "Temalar ve markan", f4p: "Beş tema, kendi renklerin, logon ve işletme adın: buzlu cam etiket, yıldızlar ya da kayan yazı olarak.",
+    f5t: "Hazır etiketler", f5p: "Sektörünü bir kez seç; \"3+1\", \"Eşyalı\", \"Otomatik\" gibi etiketler hazır gelsin.",
+    f6t: "Gizlilik esas", f6p: "Hesap yok, reklam yok, takip yok. İstediğin zaman kendi Drive'ına ya da iCloud'una yedekle.",
+    hTitle: "Nasıl çalışır", hSub: "Üç adım. İlkini yalnızca bir kez yaparsın.",
+    s1t: "İlanını ekle", s1p: "Fotoğraf ya da video, fiyat, etiketler ve kısa bir açıklama.",
+    s2t: "Görünümü seç", s2p: "Tema, çıkartmalar ve işletme adının nerede duracağı.",
+    s3t: "Her gün paylaş", s3p: "\"Hepsini paylaş\" tüm ilanları durumuna gönderir. Hatırlatınca tekrarla.",
+    secTitle: "Satış yapanlar için",
+    sec1: "🏠 Emlak", sec2: "🚗 Otomotiv", sec3: "🛍️ Dükkân ve butikler", sec4: "🛠️ Hizmetler",
+    pTitle: "Sade fiyatlandırma", pSub: "Ücretsiz başla. Portföyün büyüyünce yükselt.",
+    p1t: "Ücretsiz", p1b: "5 ilan", p1a: "Tüm temalar ve çıkartmalar", p1c: "Toplu paylaşım ve hatırlatıcı", p1d: "Yedekleme ve geri yükleme",
+    p2b: "Sınırsız", p2a: "Sınırsız ilan", p2c: "Aylık ya da yıllık", p2d: "Ödeme Google Play veya App Store üzerinden",
+    qTitle: "Sorular",
+    q1: "Vitrinly durumuma kendiliğinden mi paylaşır?", a1: "Hiçbir uygulamanın senin yerine durum paylaşmasına izin verilmez. Vitrinly her şeyi hazırlar ve paylaşım menüsünü açar; sen yalnızca \"Durumum\"u seçersin.",
+    q2: "İlanlarım nerede saklanıyor?", a2: "Yalnızca telefonunda. \"Yedekle\" ile kendi Drive'ına, iCloud'una ya da Dosyalar'a kopyasını kaydedebilir, yeni telefonda geri yükleyebilirsin.",
+    q3: "Videolar ne kadar uzun olabilir?", a3: "Durum başına 60 saniyeye kadar. Daha uzun videolarda hangi 60 saniyenin paylaşılacağını sen seçersin.",
+    q4: "Hangi diller destekleniyor?", a4: "Türkçe, İngilizce, Almanca, Fransızca, İspanyolca, Portekizce, Rusça ve Arapça.",
+    privacy: "Gizlilik Politikası", contact: "İletişim",
+    title: "Vitrinly – İlanların her gün durumda"
+  };
+  const en = {};
+  document.querySelectorAll("[data-i18n]").forEach(el => en[el.dataset.i18n] = el.textContent);
+  document.querySelectorAll("[data-i18n-html]").forEach(el => en[el.dataset.i18nHtml] = el.innerHTML);
+  en.title = document.title;
+
+  function apply(lang) {
+    const dict = lang === "tr" ? tr : en;
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach(el => { const v = dict[el.dataset.i18n]; if (v) el.textContent = v; });
+    document.querySelectorAll("[data-i18n-html]").forEach(el => { const v = dict[el.dataset.i18nHtml]; if (v) el.innerHTML = v; });
+    document.title = dict.title;
+    document.getElementById("lang").textContent = lang === "tr" ? "EN" : "TR";
+    try { localStorage.setItem("lang", lang); } catch (_) {}
+  }
+
+  let saved = null;
+  try { saved = localStorage.getItem("lang"); } catch (_) {}
+  let current = saved || ((navigator.language || "").toLowerCase().startsWith("tr") ? "tr" : "en");
+  apply(current);
+  document.getElementById("lang").addEventListener("click", () => { current = current === "tr" ? "en" : "tr"; apply(current); });
+  document.querySelectorAll('a[aria-disabled="true"]').forEach(a => a.addEventListener("click", e => e.preventDefault()));
+</script>
 </body>
 </html>
