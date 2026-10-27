@@ -95,6 +95,9 @@
   .step h3 { margin: 0 0 6px; font-size: 18px; padding-right: 40px; }
   .step p { margin: 0; color: #d9d4c4; font-size: 15px; padding-right: 40px; }
 
+  .shots { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 4px 32px; -webkit-overflow-scrolling: touch; }
+  .shots img { flex: 0 0 auto; width: 240px; height: auto; border-radius: 22px; scroll-snap-align: start; box-shadow: 0 12px 28px rgba(60, 40, 0, .18); }
+
   .sectors { display: flex; flex-wrap: wrap; gap: 10px; }
   .sectors span { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 10px 18px; font-weight: 700; }
 
@@ -123,6 +126,7 @@
     <a class="brand" href="/"><img src="/wordmark.svg" alt="Vitrinly"></a>
     <nav>
       <a href="#features" data-i18n="navFeatures">Features</a>
+      <a href="#screens" data-i18n="navScreens">Screens</a>
       <a href="#how" data-i18n="navHow">How it works</a>
       <a href="#pricing" data-i18n="navPricing">Pricing</a>
       <a href="#faq" data-i18n="navFaq">FAQ</a>
@@ -174,6 +178,21 @@
         <div class="card"><div class="ico">🎨</div><h3 data-i18n="f4t">Themes &amp; your brand</h3><p data-i18n="f4p">Five themes, your colours, your logo and business name — as a glass label, sparkles or a scrolling ticker.</p></div>
         <div class="card"><div class="ico">🏷️</div><h3 data-i18n="f5t">Ready-made tags</h3><p data-i18n="f5p">Choose your sector once and get quick tags like "3+1", "Furnished" or "Automatic" — no typing.</p></div>
         <div class="card"><div class="ico">🔒</div><h3 data-i18n="f6t">Private by design</h3><p data-i18n="f6p">No account, no ads, no tracking. Back up to your own Drive or iCloud whenever you like.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="screens">
+    <div class="wrap">
+      <h2 data-i18n="shTitle">See it in action</h2>
+      <p class="sub" data-i18n="shSub">Real-estate, car and shop listings shared as daily statuses.</p>
+      <div class="shots">
+        <img src="/shots/tr-1.jpg" width="540" height="1173" loading="lazy" alt="İlanını bir kez kaydet">
+        <img src="/shots/tr-2.jpg" width="540" height="1173" loading="lazy" alt="Şık durum tasarımları">
+        <img src="/shots/tr-3.jpg" width="540" height="1173" loading="lazy" alt="Galeriler için dikkat çekici">
+        <img src="/shots/tr-4.jpg" width="540" height="1173" loading="lazy" alt="Hepsini birden paylaş">
+        <img src="/shots/tr-5.jpg" width="540" height="1173" loading="lazy" alt="Dükkânın her ürünü için">
+        <img src="/shots/tr-6.jpg" width="540" height="1173" loading="lazy" alt="Sektörüne özel etiketler">
       </div>
     </div>
   </section>
@@ -234,7 +253,7 @@
 <script>
   // Dil: ziyaretçinin tarayıcı dili Türkçeyse Türkçe, değilse İngilizce açılır; seçim hatırlanır.
   const tr = {
-    navFeatures: "Özellikler", navHow: "Nasıl çalışır", navPricing: "Fiyat", navFaq: "SSS",
+    navFeatures: "Özellikler", navScreens: "Ekranlar", navHow: "Nasıl çalışır", navPricing: "Fiyat", navFaq: "SSS",
     eyebrow: "Emlakçılar, galeriler ve dükkânlar için",
     h1: "İlanların her gün <mark>durumda</mark>.",
     lead: "Her ilanı bir kez kaydet. Vitrinly onu göz alıcı bir durum görseline ya da videosuna çevirir, hepsini tek dokunuşla paylaşır ve süresi dolunca sana hatırlatır.",
@@ -248,6 +267,7 @@
     f4t: "Temalar ve markan", f4p: "Beş tema, kendi renklerin, logon ve işletme adın: buzlu cam etiket, yıldızlar ya da kayan yazı olarak.",
     f5t: "Hazır etiketler", f5p: "Sektörünü bir kez seç; \"3+1\", \"Eşyalı\", \"Otomatik\" gibi etiketler hazır gelsin.",
     f6t: "Gizlilik esas", f6p: "Hesap yok, reklam yok, takip yok. İstediğin zaman kendi Drive'ına ya da iCloud'una yedekle.",
+    shTitle: "Uygulamadan görüntüler", shSub: "Emlak, galeri ve dükkân ilanları günlük durum olarak.",
     hTitle: "Nasıl çalışır", hSub: "Üç adım. İlkini yalnızca bir kez yaparsın.",
     s1t: "İlanını ekle", s1p: "Fotoğraf ya da video, fiyat, etiketler ve kısa bir açıklama.",
     s2t: "Görünümü seç", s2p: "Tema, çıkartmalar ve işletme adının nerede duracağı.",
