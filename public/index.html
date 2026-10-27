@@ -10,6 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vitrinly.app/">
 <link rel="icon" type="image/svg+xml" href="/logo.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
   :root {
     --bg: #FFFBE6;
@@ -37,7 +38,7 @@
   .top { position: sticky; top: 0; z-index: 10; background: rgba(255, 251, 230, .9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
   .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 20px; text-decoration: none; }
-  .brand img { width: 36px; height: 36px; }
+  .brand img { height: 34px; width: auto; display: block; }
   .top nav { display: flex; align-items: center; gap: 18px; font-size: 15px; }
   .top nav a { text-decoration: none; color: var(--muted); }
   .lang { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 14px; font: inherit; font-size: 14px; cursor: pointer; }
@@ -119,7 +120,7 @@
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="/"><img src="/logo.svg" alt="">Vitrinly</a>
+    <a class="brand" href="/"><img src="/wordmark.svg" alt="Vitrinly"></a>
     <nav>
       <a href="#features" data-i18n="navFeatures">Features</a>
       <a href="#how" data-i18n="navHow">How it works</a>
