@@ -151,9 +151,9 @@
       <div class="phone" aria-hidden="true">
         <div class="screen">
           <div class="bars"><i></i><i></i><i></i></div>
-          <img class="story on" src="/shots/story-1.jpg" alt="">
-          <img class="story" src="/shots/story-2.jpg" alt="">
-          <img class="story" src="/shots/story-3.jpg" alt="">
+          <img class="story on" src="/shots/story-en-1.jpg" data-l10n-src="/shots/story-{lang}-1.jpg" alt="">
+          <img class="story" src="/shots/story-en-2.jpg" data-l10n-src="/shots/story-{lang}-2.jpg" alt="">
+          <img class="story" src="/shots/story-en-3.jpg" data-l10n-src="/shots/story-{lang}-3.jpg" alt="">
         </div>
       </div>
     </div>
@@ -179,12 +179,12 @@
       <h2 data-i18n="shTitle">See it in action</h2>
       <p class="sub" data-i18n="shSub">Real-estate, car and shop listings shared as daily statuses.</p>
       <div class="shots">
-        <img src="/shots/tr-1.jpg" width="540" height="1173" loading="lazy" alt="İlanını bir kez kaydet">
-        <img src="/shots/tr-2.jpg" width="540" height="1173" loading="lazy" alt="Şık durum tasarımları">
-        <img src="/shots/tr-3.jpg" width="540" height="1173" loading="lazy" alt="Galeriler için dikkat çekici">
-        <img src="/shots/tr-4.jpg" width="540" height="1173" loading="lazy" alt="Hepsini birden paylaş">
-        <img src="/shots/tr-5.jpg" width="540" height="1173" loading="lazy" alt="Dükkânın her ürünü için">
-        <img src="/shots/tr-6.jpg" width="540" height="1173" loading="lazy" alt="Sektörüne özel etiketler">
+        <img src="/shots/en-1.jpg" data-l10n-src="/shots/{lang}-1.jpg" data-i18n-alt="sh1" width="540" height="1173" loading="lazy" alt="Save it once. Share it daily.">
+        <img src="/shots/en-2.jpg" data-l10n-src="/shots/{lang}-2.jpg" data-i18n-alt="sh2" width="540" height="1173" loading="lazy" alt="Status designs that stand out">
+        <img src="/shots/en-3.jpg" data-l10n-src="/shots/{lang}-3.jpg" data-i18n-alt="sh3" width="540" height="1173" loading="lazy" alt="Eye-catching for car dealers">
+        <img src="/shots/en-4.jpg" data-l10n-src="/shots/{lang}-4.jpg" data-i18n-alt="sh4" width="540" height="1173" loading="lazy" alt="Share them all at once">
+        <img src="/shots/en-5.jpg" data-l10n-src="/shots/{lang}-5.jpg" data-i18n-alt="sh5" width="540" height="1173" loading="lazy" alt="For every product in your shop">
+        <img src="/shots/en-6.jpg" data-l10n-src="/shots/{lang}-6.jpg" data-i18n-alt="sh6" width="540" height="1173" loading="lazy" alt="Ready-made tags for your sector">
       </div>
     </div>
   </section>
@@ -258,6 +258,7 @@
     f4t: "Temalar ve markan", f4p: "Beş tema, kendi renklerin, logon ve işletme adın: buzlu cam etiket, yıldızlar ya da kayan yazı olarak.",
     f5t: "Hazır etiketler", f5p: "Sektörünü bir kez seç; \"3+1\", \"Eşyalı\", \"Otomatik\" gibi etiketler hazır gelsin.",
     f6t: "Gizlilik esas", f6p: "Hesap yok, reklam yok, takip yok. İstediğin zaman kendi Drive'ına ya da iCloud'una yedekle.",
+    sh1: "İlanını bir kez kaydet", sh2: "Şık durum tasarımları", sh3: "Galeriler için dikkat çekici", sh4: "Hepsini birden paylaş", sh5: "Dükkânın her ürünü için", sh6: "Sektörüne özel etiketler",
     shTitle: "Uygulamadan görüntüler", shSub: "Emlak, galeri ve dükkân ilanları günlük durum olarak.",
     hTitle: "Nasıl çalışır", hSub: "Üç adım. İlkini yalnızca bir kez yaparsın.",
     s1t: "İlanını ekle", s1p: "Fotoğraf ya da video, fiyat, etiketler ve kısa bir açıklama.",
@@ -279,6 +280,7 @@
   const en = {};
   document.querySelectorAll("[data-i18n]").forEach(el => en[el.dataset.i18n] = el.textContent);
   document.querySelectorAll("[data-i18n-html]").forEach(el => en[el.dataset.i18nHtml] = el.innerHTML);
+  document.querySelectorAll("[data-i18n-alt]").forEach(el => en[el.dataset.i18nAlt] = el.alt);
   en.title = document.title;
 
   function apply(lang) {
@@ -286,6 +288,9 @@
     document.documentElement.lang = lang;
     document.querySelectorAll("[data-i18n]").forEach(el => { const v = dict[el.dataset.i18n]; if (v) el.textContent = v; });
     document.querySelectorAll("[data-i18n-html]").forEach(el => { const v = dict[el.dataset.i18nHtml]; if (v) el.innerHTML = v; });
+    document.querySelectorAll("[data-i18n-alt]").forEach(el => { const v = dict[el.dataset.i18nAlt]; if (v) el.alt = v; });
+    // Ekran görüntüleri ve durum görselleri dilin kendi setinden.
+    document.querySelectorAll("[data-l10n-src]").forEach(el => el.src = el.dataset.l10nSrc.replace("{lang}", lang));
     document.title = dict.title;
     document.getElementById("lang").textContent = lang === "tr" ? "EN" : "TR";
     try { localStorage.setItem("lang", lang); } catch (_) {}
