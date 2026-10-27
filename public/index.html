@@ -62,22 +62,16 @@
 
   /* Telefon ve durum kartı (HTML ile çizilmiş örnek) */
   .phone { width: 300px; max-width: 80vw; aspect-ratio: 9 / 18.5; margin: 0 auto; background: var(--dark); border-radius: 44px; padding: 12px; box-shadow: 0 30px 60px rgba(60, 40, 0, .25); position: relative; }
-  .screen { width: 100%; height: 100%; border-radius: 34px; overflow: hidden; background: #FFF4C9; display: flex; flex-direction: column; padding: 14px; gap: 10px; position: relative; }
-  .ring { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 34%; height: 4px; display: flex; gap: 4px; }
-  .ring i { flex: 1; background: rgba(0, 0, 0, .25); border-radius: 2px; }
-  .ring i:first-child { background: var(--dark); }
-  .photo { flex: 1.25; margin-top: 10px; border-radius: 18px; background: linear-gradient(160deg, #8EC5FC 0%, #E0C3FC 45%, #F7D794 100%); position: relative; overflow: hidden; }
-  .photo::after { content: ""; position: absolute; left: 12%; right: 12%; bottom: 0; height: 52%; background: linear-gradient(#fff, #f2efe6); clip-path: polygon(0 35%, 50% 0, 100% 35%, 100% 100%, 0 100%); }
-  .pill { position: absolute; top: 10px; left: 10px; z-index: 2; background: rgba(0, 0, 0, .45); color: #fff; font-size: 11px; font-weight: 800; border-radius: 999px; padding: 5px 10px; border: 1px solid rgba(255, 255, 255, .5); }
-  .badge { position: absolute; right: 10px; top: 44%; z-index: 2; background: linear-gradient(90deg, #FF416C, #FF4B2B); color: #fff; font-weight: 900; font-size: 12px; padding: 4px 10px; border-radius: 10px; border: 2px solid #fff; transform: rotate(-8deg); animation: bob 2s ease-in-out infinite; }
-  .emoji { position: absolute; left: 12px; top: 40%; z-index: 2; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #FFE259, #FFA751); border: 2px solid #fff; font-size: 16px; animation: bob 2s ease-in-out infinite .6s; }
-  @keyframes bob { 50% { transform: translateY(-6px) rotate(4deg); } }
-  @media (prefers-reduced-motion: reduce) { .badge, .emoji { animation: none; } }
-  .ttl { font-weight: 900; font-size: 18px; line-height: 1.15; color: #3A2E00; }
-  .price { align-self: flex-start; background: #D99A00; color: #111; font-weight: 900; font-size: 20px; border-radius: 14px; padding: 4px 12px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 5px; }
-  .chips span { background: rgba(217, 154, 0, .15); color: #3A2E00; font-size: 11px; font-weight: 700; border-radius: 999px; padding: 3px 9px; }
-  .contact { background: #D99A00; color: #111; border-radius: 14px; padding: 8px; text-align: center; font-weight: 900; font-size: 14px; }
+  .screen { width: 100%; height: 100%; border-radius: 34px; overflow: hidden; background: #000; position: relative; }
+  /* Durum görselleri WhatsApp'taki gibi siyah zeminde, ortada; sırayla geçer. */
+  .story { position: absolute; left: 0; right: 0; top: 50%; width: 100%; transform: translateY(-50%); clip-path: inset(3px round 20px); opacity: 0; transition: opacity .6s ease; }
+  .story.on { opacity: 1; }
+  .bars { position: absolute; top: 34px; left: 12px; right: 12px; z-index: 2; display: flex; gap: 4px; }
+  .bars i { flex: 1; height: 3px; border-radius: 2px; background: rgba(255, 255, 255, .3); overflow: hidden; }
+  .bars i::after { content: ""; display: block; height: 100%; width: 0; background: #fff; }
+  .bars i.done::after { width: 100%; }
+  .bars i.run::after { animation: fill 3.5s linear forwards; }
+  @keyframes fill { to { width: 100%; } }
 
   /* Bölümler */
   section { padding: 56px 0; }
@@ -156,12 +150,10 @@
       </div>
       <div class="phone" aria-hidden="true">
         <div class="screen">
-          <div class="ring"><i></i><i></i><i></i></div>
-          <div class="photo"><span class="pill">⌂ Cedar Estate</span><span class="emoji">🔥</span><span class="badge" data-i18n="deal">DEAL</span></div>
-          <div class="ttl" data-i18n="demoTitle">3+1 apartment with garden</div>
-          <div class="price" data-i18n="demoPrice">$425,000</div>
-          <div class="chips"><span data-i18n="demoC1">3 bed</span><span>145 m²</span><span data-i18n="demoC2">Parking</span></div>
-          <div class="contact" data-i18n="demoPhone">📞 +1 555 010 2030</div>
+          <div class="bars"><i></i><i></i><i></i></div>
+          <img class="story on" src="/shots/story-1.jpg" alt="">
+          <img class="story" src="/shots/story-2.jpg" alt="">
+          <img class="story" src="/shots/story-3.jpg" alt="">
         </div>
       </div>
     </div>
@@ -258,7 +250,6 @@
     h1: "İlanların her gün <mark>durumda</mark>.",
     lead: "Her ilanı bir kez kaydet. Vitrinly onu göz alıcı bir durum görseline ya da videosuna çevirir, hepsini tek dokunuşla paylaşır ve süresi dolunca sana hatırlatır.",
     soon: "Yakında", note: "Hesap yok. Takip yok. İlanların telefonunda kalır.",
-    deal: "FIRSAT", demoTitle: "Bahçeli 3+1 daire", demoPrice: "₺4.750.000", demoC1: "3+1", demoC2: "Otopark", demoPhone: "📞 0555 000 00 00",
     fTitle: "Günlük durum için gereken her şey",
     fSub: "Durumlar 24 saatte kaybolur. Vitrinly onları yeniden paylaşmayı hızlı, düzenli ve şık hale getirir.",
     f1t: "Tek dokunuşla hepsini paylaş", f1p: "İlanlarını seç, tüm durum görsellerini bir kerede gönder. \"Durumum\"u seç, bitti.",
@@ -306,6 +297,22 @@
   apply(current);
   document.getElementById("lang").addEventListener("click", () => { current = current === "tr" ? "en" : "tr"; apply(current); });
   document.querySelectorAll('a[aria-disabled="true"]').forEach(a => a.addEventListener("click", e => e.preventDefault()));
+  // Telefondaki durum görselleri: 3,5 sn'de bir sıradaki.
+  (() => {
+    const stories = [...document.querySelectorAll(".story")];
+    const bars = [...document.querySelectorAll(".bars i")];
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) { bars[0].classList.add("done"); return; }
+    let i = 0;
+    const show = () => {
+      stories.forEach((s, n) => s.classList.toggle("on", n === i));
+      bars.forEach((b, n) => { b.classList.remove("run"); b.classList.toggle("done", n < i); });
+      void bars[i].offsetWidth;
+      bars[i].classList.add("run");
+      i = (i + 1) % stories.length;
+    };
+    show();
+    setInterval(show, 3500);
+  })();
 </script>
 </body>
 </html>
