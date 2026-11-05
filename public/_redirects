@@ -1,2 +1,4 @@
-/vadely /vadelio/ 301
-/vadely/* /vadelio/:splat 301
+/vadely https://vadelio.com.tr/ 301
+/vadely/* https://vadelio.com.tr/:splat 301
+/vadelio https://vadelio.com.tr/ 301
+/vadelio/* https://vadelio.com.tr/:splat 301
