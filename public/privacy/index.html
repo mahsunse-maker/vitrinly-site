@@ -24,24 +24,44 @@
 <body>
 <main>
   <header><a href="/"><img class="logo" src="/wordmark.svg" alt="Vitrinly"></a><h1>Privacy Policy · Gizlilik Politikası</h1></header>
-  <p class="meta">Last updated / Son güncelleme: 27 October 2026 · 27 Ekim 2026</p>
+  <p class="meta">Last updated / Son güncelleme: 7 November 2026 · 7 Kasım 2026</p>
   <nav><a href="#en">English</a><a href="#tr">Türkçe</a></nav>
 
   <section id="en" lang="en">
     <h1>Privacy Policy</h1>
     <h2>Data we collect</h2>
-    <p>Vitrinly does not ask you to create an account. We do not send your personal data to our servers and we do not share it with third parties. The listings, photos, videos, logo and business profile you create are stored only on your device. When you uninstall the app, this data is deleted from your device.</p>
+    <p>Vitrinly does not ask you to create an account. The listings, photos, videos, logo and business profile you create are stored only on your device. When you uninstall the app, this data is deleted from your device. We do not sell your data and we do not use it for advertising.</p>
+    <p>Apart from your phone's and store's own services described below (speech recognition, purchases), data leaves your device only when you use the optional AI features, and only for the listing you are preparing.</p>
+    <h2>AI features (optional)</h2>
+    <p>"Prepare with AI" designs your listing image, flyer and voiced video. Before the first use, the app asks for your permission. When you use it, the following is sent over an encrypted connection to our server (Google Cloud Functions, Europe):</p>
+    <ul>
+      <li>the photos you selected for that listing (reduced to at most 1024 pixels) and, if you added a video, still frames taken from it (one frame, or up to three when the listing has no photos);</li>
+      <li>the description, price and business name you typed for that listing;</li>
+      <li>for voiced videos: the script text, and if you record your own voice, that recording;</li>
+      <li>a device key, used only to count your AI allowance so the free allowance is not reset by reinstalling the app: on iPhone a random ID kept in your device's Keychain; on Android a one-way code derived from Android's app-specific ID (the ID itself is not sent). It is not linked to your name or phone number;</li>
+      <li>a random wallet ID for purchased AI packs, kept in your iCloud Keychain (iPhone) or your Google backup (Android) so that packs move with you to a new phone;</li>
+      <li>if you have Pro, the store's signed subscription receipt, used only to check that the subscription is active;</li>
+      <li>if you buy a one-time AI pack, the store's purchase receipt, used once to verify the purchase and add the pack to your wallet ID.</li>
+    </ul>
+    <p>Our server forwards the photos and text to Anthropic (Claude) to write and design the listing, and the script text or your recording to ElevenLabs to create or time the voice-over. Your phone number and your video file are never sent. Our server does not store photos, text or audio; it keeps only the device key with a usage count, the wallet ID with any remaining pack credits, and the store transaction number of redeemed packs (so a pack cannot be added twice). Anthropic does not use data sent through its commercial API to train its models; both providers process the data under their own terms and may keep it for a limited time for security and abuse prevention.</p>
+    <p>To protect the service, the app also sends an App Check token (Firebase App Check, using Apple DeviceCheck or Google Play Integrity) that only confirms the request comes from the genuine app. AI-generated content is marked in the video ("AI voice-over").</p>
+    <h2>Reporting AI content</h2>
+    <p>If you report AI-generated content from the app, we receive the reason you chose, your optional note, the AI-generated text of that listing and the device key. Photos are not included. We use reports only to review and improve the AI features and delete them within 12 months.</p>
     <h2>Photos and videos</h2>
-    <p>The app accesses only the photos and videos you choose to add to your listings, and only when you choose them. Status images and videos are created on your device. You decide which app to share them with; after sharing, the handling of that content is the responsibility of the app you chose.</p>
+    <p>The app accesses only the photos and videos you choose to add to your listings, and only when you choose them. Status images and videos are created on your device (when you use AI features, see the section above). You decide which app to share them with; after sharing, the handling of that content is the responsibility of the app you chose.</p>
+    <h2>Speech input</h2>
+    <p>If you use "Describe by voice", the app asks for microphone and speech recognition permission. Your speech is turned into text by your phone's own speech recognition service (Apple or Google); depending on your device, that service may process the audio on its servers under its own privacy policy. Vitrinly does not record, receive or store this audio. Only the resulting text stays in your listing.</p>
     <h2>Backups</h2>
     <p>The "Back up" option collects your listings, media and business profile into a single file on your device. You choose where to save that file (for example Files, iCloud or Google Drive); the app never sends the backup anywhere by itself. When restoring, only the file you select is read.</p>
     <h2>Notifications</h2>
     <p>If you allow it, the app shows a reminder 24 hours after you share, telling you that your statuses have expired. This reminder is scheduled on your device; no server is involved. You can turn notifications off in your device settings.</p>
     <h2>Ads and tracking</h2>
-    <p>The app contains no advertising, analytics or tracking services.</p>
+    <p>The app contains no advertising, analytics or tracking services. Data sent for AI features is not used to track you across apps or websites.</p>
     <h2>Purchases</h2>
-    <p>The Pro subscription is purchased through Google Play, the Apple App Store or Huawei AppGallery, depending on your device. Promo and offer codes are also redeemed only through these stores. Your payment details are processed only by the respective store; the app has no access to them. You can manage or cancel your subscription in the store's subscription settings.</p>
-    <p>To process a purchase, the store's billing system (Google Play, Apple App Store or Huawei AppGallery) may send purchase information and technical diagnostic data to the company that operates that store. This information is handled by that company under its own privacy policy. The app itself does not receive or store it.</p>
+    <p>The Pro subscription and one-time AI packs are purchased through Google Play or the Apple App Store, depending on your device. Promo and offer codes are also redeemed only through these stores. Your payment details are processed only by the respective store; the app has no access to them. You can manage or cancel your subscription in the store's subscription settings.</p>
+    <p>To process a purchase, the store's billing system (Google Play or Apple App Store) may send purchase information and technical diagnostic data to the company that operates that store. This information is handled by that company under its own privacy policy. The app itself does not receive or store it.</p>
+    <h2>Retention and deletion</h2>
+    <p>Data on your device stays until you delete the listing or uninstall the app. On our server, the usage count for your device key and your pack credits are kept while you use the AI features; reports are deleted within 12 months. To have the data linked to your device key or wallet ID deleted, email us at the address below. Please note that deleting it also removes any unused pack credits.</p>
     <h2>Children's privacy</h2>
     <p>The app does not knowingly collect data from children.</p>
     <h2>Changes</h2>
@@ -53,18 +73,38 @@
   <section id="tr" lang="tr">
     <h1>Gizlilik Politikası</h1>
     <h2>Toplanan veriler</h2>
-    <p>Vitrinly hesap oluşturmanızı istemez. Kişisel verilerinizi sunucularımıza göndermeyiz ve üçüncü kişilerle paylaşmayız. Oluşturduğunuz ilan bilgileri, fotoğraflar, videolar, logo ve marka profili bilgileri yalnızca cihazınızda saklanır. Uygulamayı kaldırdığınızda bu veriler cihazdan silinir.</p>
+    <p>Vitrinly hesap oluşturmanızı istemez. Oluşturduğunuz ilan bilgileri, fotoğraflar, videolar, logo ve marka profili bilgileri yalnızca cihazınızda saklanır. Uygulamayı kaldırdığınızda bu veriler cihazdan silinir. Verilerinizi satmayız ve reklam için kullanmayız.</p>
+    <p>Aşağıda anlatılan telefon ve mağaza hizmetleri (konuşma tanıma, satın alma) dışında veri cihazınızdan yalnızca isteğe bağlı yapay zekâ özelliklerini kullandığınızda ve yalnızca hazırladığınız ilan için çıkar.</p>
+    <h2>Yapay zekâ özellikleri (isteğe bağlı)</h2>
+    <p>"Yapay zekâ ile hazırla" ilan görselinizi, broşürünüzü ve sesli videonuzu tasarlar. İlk kullanımdan önce uygulama izninizi ister. Kullandığınızda şunlar şifreli bağlantıyla sunucumuza (Google Cloud Functions, Avrupa) gönderilir:</p>
+    <ul>
+      <li>o ilan için seçtiğiniz fotoğraflar (en fazla 1024 piksele küçültülmüş) ve video eklediyseniz videodan alınan durağan kareler (bir kare; ilanda fotoğraf yoksa en fazla üç);</li>
+      <li>o ilan için yazdığınız açıklama, fiyat ve işletme adı;</li>
+      <li>sesli videoda: video metni ve kendi sesinizi kaydederseniz o kayıt;</li>
+      <li>bir cihaz anahtarı; yalnızca yapay zekâ hakkınızı saymak için, ücretsiz hak uygulamayı silip yükleyince sıfırlanmasın diye: iPhone'da cihazınızın Anahtar Zinciri'nde tutulan rastgele bir kimlik; Android'de Android'in bu uygulamaya özel kimliğinden tek yönlü türetilen bir kod (kimliğin kendisi gönderilmez). Adınız ya da telefon numaranızla bağlantılı değildir;</li>
+      <li>satın aldığınız yapay zekâ paketleri için rastgele bir cüzdan kimliği; paketler yeni telefonunuza gelsin diye iCloud Anahtar Zinciri'nizde (iPhone) ya da Google yedeğinizde (Android) tutulur;</li>
+      <li>Pro aboneyseniz mağazanın imzalı abonelik makbuzu; yalnızca aboneliğin etkin olduğunu doğrulamak için;</li>
+      <li>tek seferlik yapay zekâ paketi alırsanız mağazanın satın alma makbuzu; bir kez, satın almayı doğrulayıp paketi cüzdan kimliğinize eklemek için.</li>
+    </ul>
+    <p>Sunucumuz fotoğrafları ve metni ilanı yazıp tasarlaması için Anthropic'e (Claude), video metnini ya da ses kaydınızı seslendirme veya zamanlama için ElevenLabs'e iletir. Telefon numaranız ve video dosyanız hiçbir zaman gönderilmez. Sunucumuz fotoğraf, metin ya da ses saklamaz; yalnızca cihaz anahtarını bir kullanım sayısıyla, cüzdan kimliğini kalan paket haklarıyla ve kullanılan paketlerin mağaza işlem numarasını (aynı paket iki kez eklenmesin diye) tutar. Anthropic, ticari API'si üzerinden gönderilen verileri modellerini eğitmek için kullanmaz; iki sağlayıcı da verileri kendi koşulları çerçevesinde işler ve güvenlik ile kötüye kullanımı önlemek için sınırlı bir süre saklayabilir.</p>
+    <p>Hizmeti korumak için uygulama ayrıca isteğin gerçek uygulamadan geldiğini doğrulayan bir App Check belirteci gönderir (Firebase App Check; Apple DeviceCheck ya da Google Play Integrity). Yapay zekâ ile üretilen içerik videoda belirtilir ("Seslendirme: yapay zekâ").</p>
+    <h2>Yapay zekâ içeriğini bildirme</h2>
+    <p>Uygulamadan yapay zekâ içeriğini bildirirseniz seçtiğiniz sebep, isteğe bağlı notunuz, o ilanın yapay zekâ tarafından yazılan metni ve cihaz anahtarı bize ulaşır. Fotoğraflar gönderilmez. Bildirimleri yalnızca yapay zekâ özelliklerini incelemek ve iyileştirmek için kullanırız ve en geç 12 ay içinde sileriz.</p>
     <h2>Fotoğraf ve videolar</h2>
-    <p>İlanlarınıza eklemek için seçtiğiniz fotoğraf ve videolara yalnızca siz seçtiğinizde erişilir. Durum görselleri ve videoları cihazınızda oluşturulur. Oluşturulan içeriği hangi uygulamayla paylaşacağınızı siz seçersiniz; paylaşım sonrasında içeriğin işlenmesi seçtiğiniz uygulamanın sorumluluğundadır.</p>
+    <p>İlanlarınıza eklemek için seçtiğiniz fotoğraf ve videolara yalnızca siz seçtiğinizde erişilir. Durum görselleri ve videoları cihazınızda oluşturulur (yapay zekâ özelliklerini kullandığınızda yukarıdaki bölüme bakın). Oluşturulan içeriği hangi uygulamayla paylaşacağınızı siz seçersiniz; paylaşım sonrasında içeriğin işlenmesi seçtiğiniz uygulamanın sorumluluğundadır.</p>
+    <h2>Sesle yazma</h2>
+    <p>"İlanı sesle anlat"ı kullanırsanız uygulama mikrofon ve konuşma tanıma izni ister. Konuşmanız telefonunuzun kendi konuşma tanıma hizmetiyle (Apple ya da Google) yazıya çevrilir; cihazınıza bağlı olarak bu hizmet sesi kendi sunucularında, kendi gizlilik politikasıyla işleyebilir. Vitrinly bu sesi kaydetmez, almaz ve saklamaz. İlanınızda yalnızca ortaya çıkan metin kalır.</p>
     <h2>Yedekleme</h2>
     <p>"Yedekle" seçeneği ilanlarınızı, medyanızı ve marka profilinizi cihazınızda tek bir dosyada toplar. Bu dosyayı nereye kaydedeceğinizi (ör. Dosyalar, iCloud, Google Drive) siz seçersiniz; uygulama yedeği hiçbir yere kendiliğinden göndermez. Yedeği geri yüklerken yalnızca sizin seçtiğiniz dosya okunur.</p>
     <h2>Bildirimler</h2>
     <p>İzin verirseniz uygulama, paylaşımınızdan 24 saat sonra durumlarınızın süresinin dolduğunu hatırlatan bir bildirim gösterir. Bu bildirim cihazınızda kurulur; bunun için hiçbir sunucu kullanılmaz. Bildirimleri cihaz ayarlarından kapatabilirsiniz.</p>
     <h2>Reklam ve takip</h2>
-    <p>Uygulama reklam, analiz veya takip hizmeti içermez.</p>
+    <p>Uygulama reklam, analiz veya takip hizmeti içermez. Yapay zekâ için gönderilen veriler sizi uygulamalar ya da siteler arasında izlemek için kullanılmaz.</p>
     <h2>Satın alma işlemleri</h2>
-    <p>Pro abonelik, cihazınıza göre Google Play, Apple App Store veya Huawei AppGallery üzerinden satın alınır. Promosyon ve teklif kodları da yalnızca bu mağazalar üzerinden kullanılır. Ödeme bilgileriniz yalnızca ilgili mağaza tarafından işlenir; uygulama bu bilgilere erişmez. Aboneliğinizi ilgili mağazanın abonelik ayarlarından yönetebilir ve iptal edebilirsiniz.</p>
-    <p>Satın alma işlemini gerçekleştirmek için mağazanın ödeme sistemi (Google Play, Apple App Store veya Huawei AppGallery), satın alma bilgilerini ve teknik tanılama verilerini mağazayı işleten şirkete iletebilir. Bu bilgiler o şirketin kendi gizlilik politikasına tabidir. Uygulamanın kendisi bu bilgileri almaz ve saklamaz.</p>
+    <p>Pro abonelik ve tek seferlik yapay zekâ paketleri, cihazınıza göre Google Play veya Apple App Store üzerinden satın alınır. Promosyon ve teklif kodları da yalnızca bu mağazalar üzerinden kullanılır. Ödeme bilgileriniz yalnızca ilgili mağaza tarafından işlenir; uygulama bu bilgilere erişmez. Aboneliğinizi ilgili mağazanın abonelik ayarlarından yönetebilir ve iptal edebilirsiniz.</p>
+    <p>Satın alma işlemini gerçekleştirmek için mağazanın ödeme sistemi (Google Play veya Apple App Store), satın alma bilgilerini ve teknik tanılama verilerini mağazayı işleten şirkete iletebilir. Bu bilgiler o şirketin kendi gizlilik politikasına tabidir. Uygulamanın kendisi bu bilgileri almaz ve saklamaz.</p>
+    <h2>Saklama süresi ve silme</h2>
+    <p>Cihazınızdaki veriler, ilanı silene ya da uygulamayı kaldırana kadar kalır. Sunucumuzda cihaz anahtarınıza ait kullanım sayısı ve paket haklarınız yapay zekâ özelliklerini kullandığınız sürece tutulur; bildirimler en geç 12 ay içinde silinir. Cihaz anahtarınıza ya da cüzdan kimliğinize bağlı verilerin silinmesini aşağıdaki e-posta adresinden isteyebilirsiniz. Silme işleminin kullanılmamış paket haklarını da kaldıracağını unutmayın.</p>
     <h2>Çocukların gizliliği</h2>
     <p>Uygulama çocuklardan bilerek veri toplamaz.</p>
     <h2>Değişiklikler</h2>
