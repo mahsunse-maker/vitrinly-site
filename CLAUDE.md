@@ -9,7 +9,7 @@ klasörünü yayınlar; **`main`'e push = otomatik yayın**. Derleme adımı yok
 - `public/vadelio/`: Vadelio tanıtım sayfası (`/vadely/` → 301 yönlendirme, `_redirects`)
 - `public/shots/`: ekran görüntüleri
 
-Kopya: Vitrinly deposundaki `docs/site/public` (`~/Desktop/emlak uygulamasi`). İkisini aynı tut: önce orada
+Kopya: Vitrinly deposundaki `docs/site/public` (`~/Projeler/emlak uygulamasi`). İkisini aynı tut: önce orada
 değiştir, sonra aynı dosyaları buraya kopyalayıp push et. Doğrulamayı vitrinly.app üzerinden yap
 (Türkiye ağından *.pages.dev açılmıyor).
 
